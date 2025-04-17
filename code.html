@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Name: A Coding Challenge | Cameron Mills</title>
+    <title>LoopIt: A Coding Challenge | Cameron Mills</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -29,7 +29,7 @@
             <div class="container">
                 <a class="navbar-brand" href="index.html">
                     <img src="/img/cmLogo.svg" height="50" class="me-1" />
-                    App Name
+                    LoopIt
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,8 +47,7 @@
                             <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                         </li>
                         <li class="nav-item">
-                            <!-- Must CHANGE -->
-                            <a class="nav-link" href="https://github.com/cammills/the-repo" target="_blank">
+                            <a class="nav-link" href="https://github.com/Cmmills17/GravitonHundo" target="_blank">
                                 The Repo
                             </a>
                         </li>
@@ -76,33 +75,77 @@
             <div class="col-12 col-lg-8">
                 <pre class="line-numbers">
                     <code class="language-js">
-function displayMessage() {
-    let inputElement = document.getElementById('messageInput');                          
-    let message = inputElement.value;
-        
-    Swal.fire(
-        {
-            backdrop: false,
-            title: 'App Name',
-            text: message,
+function getValues() {
+    let startInput = document.getElementById('startInput');
+    let endInput = document.getElementById('endInput');
+
+    let startNumber = parseInt(startInput.value);
+    let endNumber = parseInt(endInput.value);
+
+    if (Number.isInteger(startNumber) && Number.isInteger(endNumber)) {
+
+        let generatedNumbers = generateNumbers(startNumber, endNumber);
+
+        generatedNumbers;
+        displayNumbers(generatedNumbers);
+    } else {
+        Swal.fire(
+            {
+                backdrop: false,
+                title: 'oops',
+                text: 'Please enter valid start and end numbers',
+                icon: 'error',
+            }
+        );
+    }
+}
+
+function generateNumbers(start, end) {
+    let numbers = [];
+
+    for (let i = start; i &lt= end; i = i + 1) {
+        numbers.push(i);
+    }
+
+    return numbers;
+}
+
+function displayNumbers(numbers) {
+
+    let tableHtml = '';
+
+    for (let index = 0; index &lt numbers.length; index = index + 1) {
+        let currentNumber = numbers[index]
+
+        let className = '';
+
+        if (currentNumber % 2 == 0) {
+            className = 'even';
+
+        } else {
+            className = 'odd';
         }
-    );                                               
-}                       
+
+        tableHtml = tableHtml + `&lttr>&lttd class="${className}">${currentNumber}&lt/td>&lt/tr>`;
+    }
+
+    let tableElement = document.getElementById('resultsTable');
+
+    tableElement.innerHTML = tableHtml;
+}
+                                             
                     </code>
 
                 </pre>
             </div>
             <div class="col-12 col-lg-4">
                 <h4>How It Works</h4>
-                <p>The code is structured in one function</p>
+                <p>My app uses a single JavaScript function to generate a table that displays a sequence of numbers,
+                    with even numbers automatically styled in bold. It also includes an input box where users can enter
+                    a number limit. To enhance the user experience, the app uses SweetAlert to display a clean, styled
+                    alert when the input is invalid—like when someone enters letters instead of numbers. </p>
 
-                <h5>
-                    <code>displayMessage()</code>
-                </h5>
-                <p>
-                    The <code>displayMessage</code> function reads the text from the input and displays it in a Sweet
-                    Alert popup
-                </p>
+
             </div>
         </div>
 

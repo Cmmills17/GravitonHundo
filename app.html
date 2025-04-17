@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Name: A Coding Challenge | Cameron Mills</title>
+    <title>LoopIt: A Coding Challenge | Cameron Mills</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -27,7 +27,7 @@
             <div class="container">
                 <a class="navbar-brand" href="index.html">
                     <img src="/img/cmLogo.svg" height="50" class="me-1" />
-                    App Name
+                    LoopIt
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,8 +45,7 @@
                             <a class="nav-link" href="/code.html">The Code</a>
                         </li>
                         <li class="nav-item">
-                            <!-- Must CHANGE -->
-                            <a class="nav-link" href="https://github.com/cammills/the-repo" target="_blank">
+                            <a class="nav-link" href="https://github.com/Cmmills17/GravitonHundo" target="_blank">
                                 The Repo
                             </a>
                         </li>
@@ -68,15 +67,75 @@
     </header>
 
     <main class="container py-3">
-        <h1>The App UI Goes Here</h1>
+        <div class="row g-3 row-cols-1 row-cols-md-2">
+            <div class="col">
+                <!-- Title, Decription and Instructions -->
+                <h1 class="fw-bold">LoopIt: A Coding Challenge</h1>
+                <p>LoopIt, an app designed by JavaScript as a coding exercise using loops. Write a program that
+                    displays numbers from 0 to 100. This app displays the even numbers in <b>BOLD</b>. This also allows
+                    the users to select their own starting and ending numbers!
+                </p>
+                <hr />
+                <h4>
+                    Instructions
+                </h4>
+                <p>
+                    Enter a starting number and an ending number. Press the button to see the numbers in that range
+                    appear.
+                </p>
+            </div>
+            <div class="col">
+                <!-- App Controls -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
 
-        <div class="hstack gap-3">
-            <input id="messageInput" class="form-control" stlye="max-width: 16rem" placeholder="Enter a Message" />
-            <button id="submitBtn" class="btn btn-primary">
-                Display Message
-            </button>
+                                <label class="form-label" for="startInput">
+                                    Start Number
+                                </label>
+
+                                <input id="startInput" class="form-control" placeholder="Enter a starting number..."
+                                    value="0" type="number" />
+
+                            </div>
+                            <div class="col">
+
+                                <label class="form-label" for="endInput">
+                                    End Number
+                                </label>
+
+                                <input id="endInput" class="form-control" placeholder="Enter an ending number..."
+                                    value="100" type="number" />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-end">
+                        <button id="submitBtn" class="btn btn-primary">
+                            Display Numbers
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Area -->
+                <div class="mt-4">
+                    <h4>Results</h4>
+                    <div class="table-responsive">
+                        <table id="resultsTable" class="table table-striped table-bordered">
+                            <!-- 
+
+                            <tr><td>0</td></tr>
+                            <tr><td>1</td></tr>
+                            <tr><td>2</td></tr>
+                            <tr><td>3</td></tr>
+                            -->
+
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </main>
 
 
@@ -135,8 +194,9 @@
 
         // get the <button> element from the HTML
         let button = document.getElementById('submitBtn');
-        // When the button is clicked, run the displayMessage function
-        button.addEventListener('click', displayMessage);
+
+        // When the button is clicked, run the getValues function
+        button.addEventListener('click', getValues);
 
     </script>
 </body>
