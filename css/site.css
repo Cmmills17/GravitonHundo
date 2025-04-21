@@ -79,14 +79,14 @@ footer .bi:hover {
 
 
 
-td .fizz {
-    background-color: rgb(181, 181, 181);
+td.Divv {
+    background-color: var(--cm-theme-200) !important;
 }
 
-td .buzz {
+td.Buzz {
     background-color: gray;
 }
 
-td .fizzbuzz {
-    background-color: orange;
+td.DivvBuzz {
+    background-color: var(--cm-theme-700);
 }

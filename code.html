@@ -74,65 +74,8 @@
         <div class="row">
             <div class="col-12 col-lg-8">
                 <pre class="line-numbers">
-                    <code class="language-js">
-function getValues() {
-    let startInput = document.getElementById('startInput');
-    let endInput = document.getElementById('endInput');
+                    <code class="language-js" id="codeSample">
 
-    let startNumber = parseInt(startInput.value);
-    let endNumber = parseInt(endInput.value);
-
-    if (Number.isInteger(startNumber) && Number.isInteger(endNumber)) {
-
-        let generatedNumbers = generateNumbers(startNumber, endNumber);
-
-        generatedNumbers;
-        displayNumbers(generatedNumbers);
-    } else {
-        Swal.fire(
-            {
-                backdrop: false,
-                title: 'oops',
-                text: 'Please enter valid start and end numbers',
-                icon: 'error',
-            }
-        );
-    }
-}
-
-function generateNumbers(start, end) {
-    let numbers = [];
-
-    for (let i = start; i &lt= end; i = i + 1) {
-        numbers.push(i);
-    }
-
-    return numbers;
-}
-
-function displayNumbers(numbers) {
-
-    let tableHtml = '';
-
-    for (let index = 0; index &lt numbers.length; index = index + 1) {
-        let currentNumber = numbers[index]
-
-        let className = '';
-
-        if (currentNumber % 2 == 0) {
-            className = 'even';
-
-        } else {
-            className = 'odd';
-        }
-
-        tableHtml = tableHtml + `&lttr>&lttd class="${className}">${currentNumber}&lt/td>&lt/tr>`;
-    }
-
-    let tableElement = document.getElementById('resultsTable');
-
-    tableElement.innerHTML = tableHtml;
-}
                                              
                     </code>
 
@@ -203,6 +146,37 @@ function displayNumbers(numbers) {
 
     <!-- Prism JS -->
     <script src="/js/prism.js"></script>
+
+    <script>
+        Prism.plugins.NormalizeWhitespace.setDefaults({
+            'remove-trailing': true,
+            'remove-indent': true,
+            'left-trim': true,
+            'right-trim': true
+        })
+
+        const codeBlock = document.querySelector('#codeSample');
+
+        fetch('/js/site.js')
+            .then(response => response.text())
+            .then(text => {
+                text = removeComments(text);
+                text = removeEmptyLines(text);
+
+                codeBlock.textContent = text
+
+                Prism.highlightElement(codeBlock);
+            });
+
+        function removeComments(str) {
+            return str.replace(/\/\/.*$/gm, '');
+        }
+
+        function removeEmptyLines(str) {
+            return str.replace(/(\n{2,})(?!(function))/g, '\n');
+        }
+    </script>
+
 </body>
 
 </html>
