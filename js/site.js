@@ -33,12 +33,20 @@ function getValues() {
 
 // generate some numbers
 function generateNumbers(start, end) {
-    // - generate numbers between start and end
     let numbers = [];
 
-    for (let i = start; i <= end; i = i + 1) {
-        // write down the number i is on
-        numbers.push(i);
+    for (let i = start; i <= end; i++) {
+        if (i === 0) {
+            numbers.push("fizzbuzz"); // Special case for 0
+        } else if (i % 15 === 0) {
+            numbers.push("fizzbuzz");
+        } else if (i % 3 === 0) {
+            numbers.push("fizz");
+        } else if (i % 5 === 0) {
+            numbers.push("buzz");
+        } else {
+            numbers.push(i);
+        }
     }
 
     return numbers;
@@ -49,22 +57,32 @@ function displayNumbers(numbers) {
 
     let tableHtml = '';
 
+
     //go through each number in the array
     for (let index = 0; index < numbers.length; index = index + 1) {
         // -get one number out of the array
         let currentNumber = numbers[index]
 
-        // figure out if current number is even or odd
         let className = '';
 
-        if (currentNumber % 2 == 0) {
-            // the number is even
-            className = 'even';
 
-        } else {
-            //the number is odd
-            className = 'odd';
+
+        if (currentNumber % 3 == 0) {
+            // the number is div by 3
+            className = 'fizz';
+
+
+
+        } if (currentNumber % 5 == 0) {
+            //the number is div by 5
+            className = 'buzz';
+
+        } if (currentNumber % 3 == 0 && currentNumber % 5 == 0) {
+            // the number is div by 3 and 5
+            className = 'fizzbuzz';
+
         }
+
 
         //write the HTML for that number
         tableHtml = tableHtml + `<tr><td class="${className}">${currentNumber}</td></tr>`;

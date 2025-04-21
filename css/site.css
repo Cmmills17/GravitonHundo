@@ -61,8 +61,32 @@ footer .bi:hover {
 
 .app-logo {
     max-width: 400px;
+    border-radius: 2rem;
 }
 
-.even {
+.fizz {
     font-weight: bold;
+
+}
+
+.buzz {
+    font-weight: bold;
+}
+
+.fizzbuzz {
+    font-weight: bold;
+}
+
+
+
+td .fizz {
+    background-color: rgb(181, 181, 181);
+}
+
+td .buzz {
+    background-color: gray;
+}
+
+td .fizzbuzz {
+    background-color: orange;
 }
