@@ -1,7 +1,7 @@
 
 function getValues() {
     // - get each <input /> by ID
-    // Divi Input
+    // Divv Input
     let startInputElement = document.getElementById('startInput');
 
     //Buzz input
